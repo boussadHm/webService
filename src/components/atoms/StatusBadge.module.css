@@ -1,0 +1,11 @@
+.connected {
+  color: #00aa55;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.disconnected {
+  color: #ff4444;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
