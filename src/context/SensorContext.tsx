@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState } from 'react'
-import { SensorsMap } from '../types/Sensor'
+import React, { createContext, useContext,} from 'react'
+import type{ SensorsMap } from '../types/Sensor'
 import { useMqtt } from '../hooks/useMqtt'
 
 const DEFAULT_BROKER = 'wss://random.pigne.org:443'
@@ -32,6 +32,7 @@ export const SensorProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useSensors = () => {
   const context = useContext(SensorContext)
   if (!context) throw new Error('useSensors doit être utilisé dans SensorProvider')
