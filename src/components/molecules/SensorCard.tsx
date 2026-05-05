@@ -1,13 +1,7 @@
 import React from 'react'
 import styles from './SensorCard.module.css'
-
-// 🔴 TYPE TEMPORAIRE
-type Sensor = {
-  id: string
-  name: string
-  value: string
-  type: string
-}
+import { Sensor } from '../../types/Sensor'
+import { getUnit, getIcon } from '../../utils/sensorUtils'
 
 interface Props {
   sensor: Sensor
@@ -19,13 +13,20 @@ export const SensorCard: React.FC<Props> = ({ sensor }) => {
 
   return (
     <div className={styles.card}>
+
+      <span className={styles.icon}>
+        {getIcon(sensor.type)}
+      </span>
+
       <h3 className={styles.name}>{sensor.name}</h3>
 
       <p className={styles.type}>{sensor.type}</p>
 
       <p className={styles.value}>
         {isNaN(value) ? sensor.value : value.toFixed(1)}
+        <span className={styles.unit}> {getUnit(sensor.type)}</span>
       </p>
+
     </div>
   )
 }

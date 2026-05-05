@@ -1,42 +1,32 @@
 import React, { createContext, useContext, useState } from 'react'
+import { SensorsMap } from '../types/Sensor'
+import { useMqtt } from '../hooks/useMqtt'
 
-// 🔴 TYPE TEMPORAIRE (sera remplacé par celui de Sabrina)
-type Sensor = {
-  id: string
-  name: string
-  value: string
-  type: string
-  history: string[]
-}
-
-// 🔴 MAP TEMPORAIRE
-type SensorsMap = Record<string, Sensor>
+const DEFAULT_BROKER = 'wss://random.pigne.org:443'
 
 interface SensorContextType {
   sensors: SensorsMap
   connected: boolean
+  connect: (url?: string) => void
+  disconnect: () => void
 }
-// TODO: remplacer par les types officiels après merge avec Sabrina
 
 const SensorContext = createContext<SensorContextType | undefined>(undefined)
 
 export const SensorProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
-  // MOCK TEMPORAIRE
-  const [sensors] = useState<SensorsMap>({
-    temp_bureau: {
-      id: 'temp_bureau',
-      name: 'Température Bureau',
-      value: '22.5',
-      type: 'TEMPERATURE',
-      history: ['22.5', '22.3', '22.1']
-    }
-  })
+  const { sensors, connected, connect: mqttConnect, disconnect: mqttDisconnect } = useMqtt(DEFAULT_BROKER)
 
-  const connected = true
+  const connect = (url?: string) => {
+    mqttConnect(url || DEFAULT_BROKER)
+  }
+
+  const disconnect = () => {
+    mqttDisconnect()
+  }
 
   return (
-    <SensorContext.Provider value={{ sensors, connected }}>
+    <SensorContext.Provider value={{ sensors, connected, connect, disconnect }}>
       {children}
     </SensorContext.Provider>
   )
