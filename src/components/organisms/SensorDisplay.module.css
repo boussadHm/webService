@@ -1,0 +1,150 @@
+/* Base commune */
+.temperature,
+.onoff,
+.openclose,
+.gauge,
+.pressure,
+.speed,
+.positiveNumber,
+.default {
+  font-family: system-ui, 'Segoe UI', sans-serif;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+/* Température */
+.temperature {
+  font-size: 2rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ON/OFF */
+.onoff {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.on {
+  color: #2e7d32;
+  background: #e8f5e9;
+  padding: 0.25rem 1rem;
+  border-radius: 2rem;
+}
+.off {
+  color: #757575;
+  background: #eeeeee;
+  padding: 0.25rem 1rem;
+  border-radius: 2rem;
+}
+
+/* OPEN/CLOSE */
+.openclose {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.open {
+  color: #1565c0;
+  background: #e3f2fd;
+  padding: 0.25rem 1rem;
+  border-radius: 2rem;
+}
+.closed {
+  color: #5d4037;
+  background: #efebe9;
+  padding: 0.25rem 1rem;
+  border-radius: 2rem;
+}
+
+/* Jauge pour humidité / pourcentage */
+.gauge {
+  width: 100%;
+  min-width: 160px;
+  background: #f1f5f9;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+}
+.bar {
+  height: 12px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+.fill {
+  height: 100%;
+  width: 0%;
+  background: #2c7a47;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+.label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Pression */
+.pressure {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-size: 1.4rem;
+}
+.pressure .value {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.pressure .unit {
+  font-size: 1rem;
+  color: #475569;
+}
+.pressure .trend {
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+}
+
+/* Vitesse */
+.speed {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.speed .value {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.speed .unit {
+  font-size: 1rem;
+  color: #475569;
+}
+.speed .badge {
+  font-size: 0.75rem;
+  background: #e2e8f0;
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+  color: #1e293b;
+}
+
+/* Nombre positif / défaut */
+.positiveNumber,
+.default {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+.positiveNumber .value,
+.default .value {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+.unit {
+  font-size: 0.9rem;
+  color: #64748b;
+}
