@@ -1,0 +1,75 @@
+// page détail d'un capteur
+// quand on clique sur un capteur depuis la page d'accueil
+// --> on arrive ici avec l'url : /:sensorId
+// ex: /temp_bureau, /ventilateur...etc
+
+import React from 'react'
+import { useParams, Link } from 'react-router-dom' 
+// useParams permet de récuperer les parametres d'une route dynamique
+import { useSensors } from '../context/SensorContext'
+import { getUnit } from '../utils/sensorUtils'
+import styles from './SensorPage.module.css'
+
+export const SensorPage: React.FC = () => {
+    // useParams recupere l'ID depuis l'url
+    // exmpl: URL = /temp_bureau --> sensorId = temp_bureau
+    const { sensorId } = useParams<{ sensorId: string }>()
+
+    // on recupere tous les capteurs depuis le Context
+    const { sensors } = useSensors()
+
+    // on cherche le capteur qui correspond à l'ID de l'url
+    const sensor = sensorId ? sensors[sensorId] : undefined
+
+    // si le capteur n'existe pas encore:
+    if (!sensor) {
+        return (
+            <div className={styles.notFound}>
+                <h2>Capteur non trouvé</h2>
+                <p>Le capteur que vous cherchez n'existe pas ou n'est pas encore disponible.</p>
+                <Link to="/">Retour à l'accueil</Link>
+            </div>
+        )
+    }
+
+    // si le capteur existe:
+    return (
+        <div className={styles.page}>
+
+            {/* Nom du capteur */}
+            <h2 className={styles.title}>{sensor.name}</h2>
+            <p className={styles.type}>
+                Type : <strong>{sensor.type}</strong>
+            </p>
+
+            {/* Valeur actuelle */}
+            <section className={styles.current}>
+                <h3>Valeur actuelle</h3>
+                <p className={styles.value}>
+                    {parseFloat(sensor.value).toFixed(2)} {getUnit(sensor.type)}
+                </p>
+            </section>
+
+            {/* Historique des 10 dernieres valeurs */}
+            <section className={styles.history}>
+                <h3>Historique</h3>
+                <ul className={styles.list}>
+                    {sensor.history.map((val, index) => (
+                        <li
+                            key={index}
+                            className={index === 0 ? styles.latest : styles.old}
+                        >
+                            {parseFloat(val).toFixed(2)} {getUnit(sensor.type)}
+                        </li>
+                    ))}
+                </ul>
+            </section>
+
+            {/* Bouton retour */}
+            <Link to="/" className={styles.back}>
+                 Retour
+            </Link>
+
+        </div>
+    )
+}
