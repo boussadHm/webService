@@ -10,15 +10,23 @@
 }
 
 .connect {
-  background-color: #00aa55;
+  background: rgb(141, 204, 141);
+  color: green;
+  border: 1px solid #d0ffd6;
+}
+
+.connect:hover {
+  background: #4e924c65;
   color: white;
-  border: none;
-  padding: 0.5rem 1rem;
+
 }
 
 .disconnect {
-  background-color: #ff4444;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
+  background: #fff0f2;
+  color: #e60023;
+  border: 1px solid #ffd0d7;
+}
+
+.disconnect:hover {
+  background: #ffd0d7;
 }

@@ -22,9 +22,6 @@ export const Navbar: React.FC = () => {
         <StatusBadge connected={connected} />
       </header>
 
-      {/* INPUT BROKER */}
-      <BrokerInput />
-
       {/* SIDEBAR */}
       <aside className={styles.sidebar}>
         <h2 className={styles.sidebarTitle}>Sensors</h2>
