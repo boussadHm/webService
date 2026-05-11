@@ -2,16 +2,20 @@
 // il définit les routes : quelle page affihcier selon l'url du navigateur
 
 import { Routes, Route } from 'react-router-dom'
-import {HomePage} from './pages/HomePage'
+import { Navbar } from './components/organisms/Navbar'
+import { HomePage } from './pages/HomePage'
 import { SensorPage } from './pages/SensorPage'
 import styles from './App.module.css'
 
-
 function App() {
   return (
+    // layout : Navbar à gauche + contenu à droite
     <div className={styles.app}>
-      <main className={styles.main}>
+      {/*Navbar = sidebar gauche avec liste des capteurs */}
+      <Navbar />
 
+      {/* Contenu principal à droite */}
+      <main className={styles.main}>
         <Routes>
           {/* /-->  page d'accueil avec tous les capteurs */}
           <Route path="/" element={<HomePage />} />

@@ -1,6 +1,6 @@
 // le point d'entree de l'application React
 // c'est le premier fichier qui s'execute
-// il injecte l'app Reat dans le div#root de index.html
+// il injecte l'app React dans le div#root de index.html
 
 
 import { StrictMode } from 'react'
@@ -22,7 +22,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
 
     {/* BrowserRouter enveloppe toute l'app
-        pout que Reat Router fonctionne*/}
+        pout que React Router fonctionne*/}
     <BrowserRouter>
         {/* SensorProvider connecte l'app au broker MQTT
             et partage les capteurs dans tous les composants */}

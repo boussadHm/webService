@@ -1,8 +1,11 @@
 .app {
+  display: flex;
   min-height: 100vh;
-  background: #f5f5f5;
 }
 
 .main {
-  padding: 1rem;
+  flex: 1;
+  padding: 1.5rem;
+  background: #f5f5f5;
+  overflow-y: auto;
 }

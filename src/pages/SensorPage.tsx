@@ -9,6 +9,7 @@ import { useParams, Link } from 'react-router-dom'
 import { useSensors } from '../context/SensorContext'
 import { getUnit } from '../utils/sensorUtils'
 import styles from './SensorPage.module.css'
+import { SensorDisplay } from '../components/organisms/SensorDisplay'
 
 export const SensorPage: React.FC = () => {
     // useParams recupere l'ID depuis l'url
@@ -45,9 +46,7 @@ export const SensorPage: React.FC = () => {
             {/* Valeur actuelle */}
             <section className={styles.current}>
                 <h3>Valeur actuelle</h3>
-                <p className={styles.value}>
-                    {parseFloat(sensor.value).toFixed(2)} {getUnit(sensor.type)}
-                </p>
+                <SensorDisplay sensor ={sensor} />
             </section>
 
             {/* Historique des 10 dernieres valeurs */}
