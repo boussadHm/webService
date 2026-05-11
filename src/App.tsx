@@ -7,13 +7,16 @@ import { HomePage } from "./pages/HomePage";
 import { SensorPage } from "./pages/SensorPage";
 import styles from "./App.module.css";
 import { BrokerInput } from "./components/molecules/BrokerInput";
+import { useState } from "react";
 
 function App() {
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+
   return (
     // layout : Navbar à gauche + contenu à droite
     <div className={styles.app}>
       {/*Navbar = sidebar gauche avec liste des capteurs */}
-      <Navbar />
+      <Navbar open={sidebarOpen} setOpen={setSidebarOpen} />
 
       {/* Contenu principal à droite */}
       <main className={styles.main}>

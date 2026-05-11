@@ -1,30 +1,39 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-
 import { useSensors } from "../../context/SensorContext";
-
 import { StatusBadge } from "../atoms/StatusBadge";
-import { BrokerInput } from "../molecules/BrokerInput";
-
 import styles from "./Navbar.module.css";
+import logo from "../../assets/logo.svg";
 
-export const Navbar: React.FC = () => {
+interface Props {
+  open: boolean;
+  setOpen: (v: boolean) => void;
+}
+
+export const Navbar: React.FC<Props> = ({ open, setOpen }) => {
   const { sensors, connected } = useSensors();
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.sidebar} ${open ? styles.open : styles.closed}`}>
+      {/* TOGGLE BUTTON (le fameux "handle") */}
+      <button className={styles.toggle} onClick={() => setOpen(!open)}>
+        {open ? "❮" : "☰"}
+      </button>
+
       {/* HEADER */}
       <header className={styles.header}>
         <Link to="/" className={styles.title}>
-          Dashboard MQTT
+          <img src={logo} alt="SensorFlow" height="40" />
         </Link>
-
-        <StatusBadge connected={connected} />
+        <div className={styles.statusRow}>
+          <span className={styles.statusLabel}>Statut :</span>
+          <StatusBadge connected={connected} />
+        </div>
       </header>
 
-      {/* SIDEBAR */}
-      <aside className={styles.sidebar}>
-        <h2 className={styles.sidebarTitle}>Sensors</h2>
+      {/* LIST */}
+      <aside className={styles.listWrapper}>
+        <h2 className={styles.sidebarTitle}>Capteurs</h2>
 
         <ul className={styles.list}>
           {Object.values(sensors).map((sensor) => (

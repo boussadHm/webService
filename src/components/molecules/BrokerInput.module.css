@@ -2,17 +2,21 @@
   display: flex;
   gap: 0.5rem;
   padding: 1rem;
+  
 }
 
 .input {
   flex: 1;
   padding: 0.5rem;
+  border-radius: 8px;
 }
 
 .connect {
   background: rgb(141, 204, 141);
   color: green;
   border: 1px solid #d0ffd6;
+  border-radius: 8px;
+  padding: 0.5rem;
 }
 
 .connect:hover {
@@ -25,6 +29,8 @@
   background: #fff0f2;
   color: #e60023;
   border: 1px solid #ffd0d7;
+  border-radius: 8px;
+  padding: 0.5rem;
 }
 
 .disconnect:hover {

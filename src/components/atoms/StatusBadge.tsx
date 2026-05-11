@@ -8,7 +8,7 @@ interface StatusBadgeProps {
 export const StatusBadge: React.FC<StatusBadgeProps> = ({ connected }) => {
   return (
     <span className={connected ? styles.connected : styles.disconnected}>
-      {connected ? 'Connecté' : ' Déconnecté'}
+      {connected ? '🟢 Connecté' : '🔴 Déconnecté'}
     </span>
   )
 }

@@ -29,7 +29,7 @@ export const BrokerInput: React.FC = () => {
         onClick={handleClick}
         className={connected ? styles.disconnect : styles.connect}
       >
-        {connected ? 'Disconnect' : 'Connect'}
+        {connected ? 'Déconnecter' : 'Connecter'}
       </button>
     </div>
   )
