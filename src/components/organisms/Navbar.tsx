@@ -4,6 +4,7 @@ import { useSensors } from "../../context/SensorContext";
 import { StatusBadge } from "../atoms/StatusBadge";
 import styles from "./Navbar.module.css";
 import logo from "../../assets/logo.svg";
+import { useTheme } from "../../context/ThemeContext";
 
 interface Props {
   open: boolean;
@@ -12,6 +13,7 @@ interface Props {
 
 export const Navbar: React.FC<Props> = ({ open, setOpen }) => {
   const { sensors, connected } = useSensors();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <div className={`${styles.sidebar} ${open ? styles.open : styles.closed}`}>
@@ -25,6 +27,9 @@ export const Navbar: React.FC<Props> = ({ open, setOpen }) => {
         <Link to="/" className={styles.title}>
           <img src={logo} alt="SensorFlow" height="40" />
         </Link>
+        <button onClick={toggleTheme} className={styles.themeToggle}>
+          {theme === "light" ? "🌙 Mode sombre" : "💡 Mode clair"}
+        </button>
         <div className={styles.statusRow}>
           <span className={styles.statusLabel}>Statut :</span>
           <StatusBadge connected={connected} />

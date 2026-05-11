@@ -5,9 +5,11 @@
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  background: #f0f0f0;
-  color: #111;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.2s ease;
+  margin: 0;
+  font-family: system-ui, sans-serif;
 }
 
 a {
@@ -39,3 +41,28 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: #999;
 }
+
+/* Thème clair (par défaut) */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --border-color: #e2e8f0;
+  --card-bg: #ffffff;
+  --navbar-bg: #f1f5f9;
+  --button-hover: #e2e8f0;
+}
+
+/* Thème sombre */
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border-color: #334155;
+  --card-bg: #1e293b;
+  --navbar-bg: #0f172a;
+  --button-hover: #334155;
+}
+

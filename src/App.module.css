@@ -1,14 +1,16 @@
 .app {
   display: flex;
   min-height: 100vh;
-  background: #fafafa;
   width: 100%;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .main {
   flex: 1;
   padding: 2rem;
-  background: #fafafa;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   overflow-y: auto;
   min-width: 0;
 }

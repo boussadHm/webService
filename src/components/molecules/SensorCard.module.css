@@ -1,13 +1,15 @@
 .card {
-  border: 1px solid #ddd;
   border-radius: 10px;
   padding: 1rem;
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
 }
 
 .name {
   font-size: 1rem;
   margin: 0;
+  color: var(--text-primary);
+
 }
 
 .type {

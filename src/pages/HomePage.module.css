@@ -6,13 +6,13 @@
 .pageTitle {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #111;
+  color: var(--text-primary);
   margin-bottom: 0.3rem;
 }
 
 .pageSubtitle {
   font-size: 0.9rem;
-  color: #999;
+  color: var(--text-primary);
 }
 
 /* Grille responsive */
@@ -31,7 +31,7 @@
 
 /* Carte capteur */
 .card {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 20px;
   padding: 2rem;
   border: 1px solid #f0f0f0;
@@ -80,7 +80,7 @@
 .card p {
   font-size: 2rem;
   font-weight: 700;
-  color: #111;
+  color: var(--text-primary);
 }
 
 /* Message attente */
