@@ -1,11 +1,14 @@
 .app {
   display: flex;
   min-height: 100vh;
+  background: #fafafa;
+  width: 100%;
 }
 
 .main {
   flex: 1;
-  padding: 1.5rem;
-  background: #f5f5f5;
+  padding: 2rem;
+  background: #fafafa;
   overflow-y: auto;
+  min-width: 0;
 }

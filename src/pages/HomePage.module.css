@@ -1,8 +1,27 @@
+.header {
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+}
+
+.pageTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.3rem;
+}
+
+.pageSubtitle {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+/* Grille responsive */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+  padding: 0.5rem;
+  width: 100%;
 }
 
 .link {
@@ -10,20 +29,68 @@
   color: inherit;
 }
 
+/* Carte capteur */
 .card {
   background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  padding: 1rem;
-  transition: transform 0.2s;
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid #f0f0f0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Barre rouge en haut */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #e60023, #ff4d6d);
+  border-radius: 20px 20px 0 0;
 }
 
 .card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(230, 0, 35, 0.12);
+  border-color: #ffd0d7;
 }
 
+.icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card p {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111;
+}
+
+/* Message attente */
 .waiting {
-  text-align: center;
-  padding: 3rem;
-  color: #666;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  color: #999;
+  gap: 1rem;
+  font-size: 1rem;
 }

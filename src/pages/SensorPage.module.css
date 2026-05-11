@@ -1,39 +1,72 @@
-/* SensorPage.module.css */
-
 .page {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
-  padding: 2rem;
 }
 
 .title {
   font-size: 1.8rem;
-  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.3rem;
 }
 
 .type {
-  color: #666;
-  margin-bottom: 2rem;
+  font-size: 0.72rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
 }
 
-/* Valeur actuelle */
 .current {
   text-align: center;
-  padding: 2rem;
-  background: #f9f9f9;
-  border-radius: 12px;
-  margin-bottom: 2rem;
+  padding: 2.5rem;
+  background: white;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  border: 1px solid #f0f0f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.current::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #e60023, #ff4d6d);
+}
+
+.current h3 {
+  font-size: 0.72rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1.2rem;
+  font-weight: 400;
 }
 
 .value {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #0077cc;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #111;
 }
 
-/* Historique */
-.history h3 {
+.history {
+  background: white;
+  border-radius: 20px;
+  padding: 1.5rem;
   margin-bottom: 1rem;
+  border: 1px solid #f0f0f0;
+}
+
+.history h3 {
+  font-size: 0.72rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1.2rem;
+  font-weight: 400;
 }
 
 .list {
@@ -42,40 +75,45 @@
 }
 
 .list li {
-  padding: 0.5rem;
-  border-bottom: 1px solid #eee;
-  color: #555;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #f5f5f5;
+  font-size: 0.95rem;
+  color: #666;
 }
 
-/* La valeur la plus récente en gras */
+.list li:last-child { border-bottom: none; }
+
 .latest {
-  font-weight: bold;
-  color: #000 !important;
-  font-size: 1.1rem;
+  font-weight: 700 !important;
+  color: #111 !important;
+  font-size: 1.1rem !important;
 }
 
-.old {
-  color: #888;
-}
-
-/* Page capteur introuvable */
 .notFound {
   text-align: center;
-  padding: 3rem;
+  padding: 4rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
+  color: #999;
 }
 
-/* Bouton retour */
 .back {
-  display: inline-block;
-  margin-top: 2rem;
-  color: #0077cc;
-  text-decoration: none;
-  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 1rem;
+  padding: 0.8rem 1.8rem;
+  background: #e60023;
+  color: white !important;
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
 }
 
 .back:hover {
-  text-decoration: underline;
+  background: #ad081b;
+  transform: translateY(-2px);
 }

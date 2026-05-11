@@ -44,7 +44,8 @@ export function useMqtt(initialUrl: string) {
     // On se connecte au broker avec l'URL donnée
     const client = mqtt.connect(url, {
       clean: true,         // on repart de zéro à chaque connexion
-      reconnectPeriod: 0   // pas de reconnexion automatique
+      reconnectPeriod: 3000,   // on active la reconnexion automatique toutes les 3 secondes car il ya un bug 
+      keepalive: 60,       //garde la connexion active en envoyant un ping toutes les 60 secondes
     })
 
     // Quand la connexion est établie avec le broker
