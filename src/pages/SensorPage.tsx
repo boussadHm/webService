@@ -4,12 +4,13 @@
 // ex: /temp_bureau, /ventilateur...etc
 
 import React from 'react'
-import { useParams, Link } from 'react-router-dom' 
+import { useParams, Link } from 'react-router-dom'
 // useParams permet de récuperer les parametres d'une route dynamique
 import { useSensors } from '../context/SensorContext'
 import { getUnit } from '../utils/sensorUtils'
 import styles from './SensorPage.module.css'
 import { SensorDisplay } from '../components/organisms/SensorDisplay'
+import { SensorChart } from '../components/molecules/SensorChart'
 
 export const SensorPage: React.FC = () => {
     // useParams recupere l'ID depuis l'url
@@ -46,27 +47,38 @@ export const SensorPage: React.FC = () => {
             {/* Valeur actuelle */}
             <section className={styles.current}>
                 <h3>Valeur actuelle</h3>
-                <SensorDisplay sensor ={sensor} />
+                <SensorDisplay sensor={sensor} />
             </section>
 
-            {/* Historique des 10 dernieres valeurs */}
+            {/* Graphique dtemps réel */}
+            <SensorChart history={sensor.history} type={sensor.type} />
+
+            {/* Historique des 10 dernières valeurs */}
             <section className={styles.history}>
                 <h3>Historique</h3>
                 <ul className={styles.list}>
-                    {sensor.history.map((val, index) => (
-                        <li
-                            key={index}
-                            className={index === 0 ? styles.latest : styles.old}
-                        >
-                            {parseFloat(val).toFixed(2)} {getUnit(sensor.type)}
-                        </li>
-                    ))}
+                    {sensor.history.map((val, index) => {
+                        // On vérifie si c'est un nombre ou un texte
+                        const numVal = parseFloat(val)
+                        const displayVal = isNaN(numVal)
+                            ? val  // texte (OPEN, CLOSED, ON, OFF)
+                            : `${numVal.toFixed(2)} ${getUnit(sensor.type)}` // nombre
+
+                        return (
+                            <li
+                                key={index}
+                                className={index === 0 ? styles.latest : styles.old}
+                            >
+                                {displayVal}
+                            </li>
+                        )
+                    })}
                 </ul>
             </section>
 
             {/* Bouton retour */}
             <Link to="/" className={styles.back}>
-                 Retour
+                Retour
             </Link>
 
         </div>
