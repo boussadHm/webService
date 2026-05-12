@@ -8,19 +8,19 @@
   flex: 1;
   padding: 0.5rem;
   border-radius: 8px;
-  color: var(--text-primary);
+  color: black;
 }
 
 .connect {
-  background: rgb(141, 204, 141);
-  color: green;
+  background: rgb(108, 192, 108);
+  color: rgb(4, 57, 4);
   border: 1px solid #d0ffd6;
   border-radius: 8px;
   padding: 0.5rem;
 }
 
 .connect:hover {
-  background: #4e924c65;
+  background: #44df3e65;
   color: white;
 
 }
@@ -35,4 +35,46 @@
 
 .disconnect:hover {
   background: #ffd0d7;
+}
+
+.logo {
+  text-align: center;
+}
+
+/* Conteneur pour l'erreur */
+.errorWrapper {
+  margin-top: 0.75rem;
+  width: 100%;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #fef2f2;
+  /* rouge très clair */
+  border-left: 4px solid #ef4444;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  color: #b91c1c;
+  font-weight: 500;
+}
+
+
+/* Si tu veux une animation d'apparition */
+.error {
+  animation: fadeInUp 0.2s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './SensorCard.module.css'
-import { Sensor } from '../../types/Sensor'
+import type { Sensor } from '../../types/Sensor'
 import { getUnit, getIcon } from '../../utils/sensorUtils'
 
 interface Props {
@@ -22,6 +22,7 @@ export const SensorCard: React.FC<Props> = ({ sensor }) => {
 
       <p className={styles.type}>{sensor.type}</p>
 
+      {/* Valeur avec unité : si la valeur n'est pas un nombre, affiche la valeur brute */}
       <p className={styles.value}>
         {isNaN(value) ? sensor.value : value.toFixed(1)}
         <span className={styles.unit}> {getUnit(sensor.type)}</span>

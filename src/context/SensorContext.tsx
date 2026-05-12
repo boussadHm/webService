@@ -4,19 +4,24 @@ import { useMqtt } from '../hooks/useMqtt'
 
 const DEFAULT_BROKER = 'wss://random.pigne.org:443'
 
+// Type du contexte : expose les capteurs, état connexion, fonctions et erreur
 interface SensorContextType {
   sensors: SensorsMap
   connected: boolean
   connect: (url?: string) => void
   disconnect: () => void
+  error: string | null
 }
 
+// Création du contexte (sera utilisé par les composants enfants)
 const SensorContext = createContext<SensorContextType | undefined>(undefined)
 
+// Fournisseur qui enrobe l'application pour partager les données MQTT
 export const SensorProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
-  const { sensors, connected, connect: mqttConnect, disconnect: mqttDisconnect } = useMqtt(DEFAULT_BROKER)
+  const { sensors, connected, connect: mqttConnect, disconnect: mqttDisconnect, error } = useMqtt(DEFAULT_BROKER)
 
+   // Wrapper de la fonction connect pour permettre un URL optionnel (si non fourni, utilise DEFAULT_BROKER)
   const connect = (url?: string) => {
     mqttConnect(url || DEFAULT_BROKER)
   }
@@ -26,7 +31,7 @@ export const SensorProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   }
 
   return (
-    <SensorContext.Provider value={{ sensors, connected, connect, disconnect }}>
+    <SensorContext.Provider value={{ sensors, connected, connect, disconnect, error }}>
       {children}
     </SensorContext.Provider>
   )

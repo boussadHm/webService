@@ -17,7 +17,7 @@ export const Navbar: React.FC<Props> = ({ open, setOpen }) => {
 
   return (
     <div className={`${styles.sidebar} ${open ? styles.open : styles.closed}`}>
-      {/* TOGGLE BUTTON (le fameux "handle") */}
+      {/* TOGGLE BUTTON */}
       <button className={styles.toggle} onClick={() => setOpen(!open)}>
         {open ? "❮" : "☰"}
       </button>
